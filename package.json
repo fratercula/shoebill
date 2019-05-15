@@ -1,0 +1,30 @@
+{
+  "name": "@fratercula/shoebill",
+  "version": "0.1.0",
+  "description": "React Form",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "falco -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fratercula/shoebill.git"
+  },
+  "keywords": [
+    "react",
+    "form"
+  ],
+  "peerDependencies": {
+    "react": "*",
+    "antd": "*"
+  },
+  "dependencies": {
+    "'@fratercula/owl": "*"
+  },
+  "author": "LoeiFy <LoeiFy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fratercula/shoebill/issues"
+  },
+  "homepage": "https://github.com/fratercula/shoebill#readme"
+}
