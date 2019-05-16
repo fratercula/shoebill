@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input } from 'antd'
 
-export default function ({ props, onChange }) {
+export default function ({ onChange, ...props }) {
   return (
     <Input
       {...props}

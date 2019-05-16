@@ -4,7 +4,7 @@ export default [
       type: 'forms',
       props: {
         key: 'nick',
-        value: '123213',
+        value: '12',
         label: 'nick',
       }
     },
@@ -12,12 +12,28 @@ export default [
       type: 'forms',
       props: {
         key: 'age',
+        type: 'input',
         value: '123213',
         label: 'age',
-        dispatch(value) {
-          this.update('nick', value)
+        onChange(key, value) {
+          this.dispatch('nick', value)
         }
       }
     },
   ],
+  [
+    {
+      type: 'forms',
+      props: {
+        type: 'input',
+        key: 'tttt',
+        value: 'op',
+        label: 'txt',
+        subscribe(key, value) {
+          console.log(key, value)
+          this.dispatch('nick', 333)
+        },
+      }
+    },
+  ]
 ]
