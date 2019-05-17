@@ -16,10 +16,8 @@ export default class extends Component {
     defaultData.forEach((items, i) => {
       data[i] = []
       items.forEach((item, j) => {
-        const { type, props = {} } = item
-        data[i][j] = { type, props: {} }
-
-        const { onChange, subscribe, ...rest } = props
+        data[i][j] = { type: 'forms', props: {} }
+        const { onChange, subscribe, ...rest } = item
 
         if (typeof subscribe === 'function') {
           this.subscribes.push(subscribe)
@@ -64,7 +62,7 @@ export default class extends Component {
         onEvent={(t, onChange, key, value) => {
           this.dispatch(key, value)
           if (typeof onChange === 'function') {
-            onChange.call(this, key, value)
+            onChange.call(this, value)
           }
           this.subscribes.forEach((subscribe) => {
             subscribe.call(this, key, value)
