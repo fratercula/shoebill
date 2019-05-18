@@ -16,10 +16,11 @@
   ],
   "peerDependencies": {
     "react": "*",
-    "antd": "*"
+    "antd": "*",
+    "moment": "*"
   },
   "dependencies": {
-    "'@fratercula/owl": "*"
+    "@fratercula/owl": "*"
   },
   "author": "LoeiFy <LoeiFy@gmail.com>",
   "license": "MIT",
