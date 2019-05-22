@@ -22,5 +22,6 @@ module.exports = {
   npm: {
     registry: 'https://registry.npm.taobao.org',
   },
+  cssModule: true,
   mode: 'development',
 }

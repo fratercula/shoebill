@@ -1,4 +1,5 @@
 import React from 'react'
+import { Form } from 'antd'
 import Input from './input'
 
 export default function ({ props, onEvent }) {
@@ -24,10 +25,27 @@ export default function ({ props, onEvent }) {
     )
   }
 
+  if (!c) {
+    return null
+  }
+
   return (
-    <div>
-      <label>{label}: </label>
-      {c}
-    </div>
+    <Form
+      style={{ width: '100%' }}
+      labelCol={{
+        span: 4,
+      }}
+      wrapperCol={{
+        span: 20,
+      }}
+    >
+      <Form.Item
+        label={label}
+        validateStatus="error"
+        help="The information is being validated..."
+      >
+        {c}
+      </Form.Item>
+    </Form>
   )
 }
