@@ -8,12 +8,16 @@ export default function ({ props, onEvent }) {
     key,
     label,
     onChange,
+    labelCol,
+    wrapperCol,
+    error,
+    verify,
     ...rest
   } = props
 
   let c = null
 
-  if (type === 'text' && rest.value) {
+  if (type === 'text' && key) {
     c = (
       <span>{rest.value}</span>
     )
@@ -32,17 +36,14 @@ export default function ({ props, onEvent }) {
   return (
     <Form
       style={{ width: '100%' }}
-      labelCol={{
-        span: 4,
-      }}
-      wrapperCol={{
-        span: 20,
-      }}
+      labelCol={labelCol}
+      wrapperCol={wrapperCol}
     >
       <Form.Item
+        required={!!verify}
         label={label}
-        validateStatus="error"
-        help="The information is being validated..."
+        validateStatus={error ? 'error' : null}
+        help={error}
       >
         {c}
       </Form.Item>

@@ -20,7 +20,8 @@
     "moment": "*"
   },
   "dependencies": {
-    "@fratercula/owl": "*"
+    "@fratercula/owl": "*",
+    "prop-types": "*"
   },
   "author": "LoeiFy <LoeiFy@gmail.com>",
   "license": "MIT",
