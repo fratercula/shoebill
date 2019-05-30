@@ -78,7 +78,7 @@ export default class extends Component {
   }
 
   onEvent = (t, onChange, key, value) => {
-    this.update(key, { value })
+    this.update(key, { value, error: '' })
     if (typeof onChange === 'function') {
       onChange.call(this, value)
     }
@@ -87,7 +87,7 @@ export default class extends Component {
     })
   }
 
-  onSubmit = () => {
+  onSubmit = async () => {
     const { data } = this.state
     const items = data
       .reduce((c, p) => c.concat(p), [])
@@ -99,8 +99,8 @@ export default class extends Component {
       if (!verify) {
         continue
       }
-      if (!verify(value)) {
-        this.setError(key, '值错误')
+      if (!(await verify.validator(value))) {
+        this.setError(key, verify.message)
         return
       }
     }
@@ -115,15 +115,7 @@ export default class extends Component {
           cellMargin={[0, 20]}
           components={{ forms }}
           data={data}
-          onEvent={(t, onChange, key, value) => {
-            this.update(key, { value })
-            if (typeof onChange === 'function') {
-              onChange.call(this, value)
-            }
-            this.subscribes.forEach((subscribe) => {
-              subscribe.call(this, key, value)
-            })
-          }}
+          onEvent={this.onEvent}
         />
         <div>
           <Button onClick={this.onSubmit}>提交</Button>

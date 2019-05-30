@@ -4,8 +4,11 @@ export default [
       key: 'nick',
       value: '12',
       label: 'nick',
-      verify(value) {
-        return value !== undefined
+      verify: {
+        message: '错误',
+        validator(value) {
+          return value !== ''
+        },
       }
     },
     {
@@ -31,8 +34,15 @@ export default [
             : this.removeError('age')
         }
       },
-      verify(value) {
-        return value === 'error'
+      verify: {
+        message: '什么错误',
+        validator(value) {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(value === 'error')
+            }, 1000)
+          })
+        },
       }
     },
   ]
