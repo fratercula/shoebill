@@ -13,6 +13,7 @@ export default [
     },
     {
       key: 'age',
+      disabled: true,
       type: 'input',
       value: '123213',
       onChange(value) {
@@ -27,6 +28,7 @@ export default [
       key: 'tttt',
       value: 'op',
       label: 'txt',
+      hidden: true,
       subscribe(key, value) {
         if (key === 'tttt') {
           value === 'error'
@@ -39,7 +41,7 @@ export default [
         validator(value) {
           return new Promise((resolve) => {
             setTimeout(() => {
-              resolve(value === 'error')
+              resolve(value === '???')
             }, 1000)
           })
         },
@@ -47,3 +49,23 @@ export default [
     },
   ]
 ]
+
+
+/*
+{
+  key: String,
+  value: String/Number/Boolean/Object/Array,
+  label: String,
+  verify: {
+    message: String,
+    validator: Function,
+  },
+  onChange: Function,
+  subscribe: Function,
+  error: String,
+  type: String,
+
+  disabled: Boolean,
+  hidden: Boolean,
+}
+*/

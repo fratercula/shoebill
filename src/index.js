@@ -24,10 +24,14 @@ export default class extends Component {
   subscribes = []
 
   componentDidMount() {
-    const { defaultData, labelCol, wrapperCol } = this.props
+    this.reset()
+  }
+
+  serialize = (origin) => {
+    const { labelCol, wrapperCol } = this.props
     const data = []
 
-    defaultData.forEach((items, i) => {
+    origin.forEach((items, i) => {
       data[i] = []
       items.forEach((item, j) => {
         data[i][j] = { type: 'forms', props: {} }
@@ -50,7 +54,7 @@ export default class extends Component {
       })
     })
 
-    this.setState({ data })
+    return data
   }
 
   update = (key, status) => {
@@ -87,15 +91,15 @@ export default class extends Component {
     })
   }
 
-  onSubmit = async () => {
+  submit = async () => {
     const { data } = this.state
     const items = data
       .reduce((c, p) => c.concat(p), [])
       .map(({ props }) => ({ ...props }))
-      .filter(({ key }) => key !== undefined)
+      .filter(({ key, hidden }) => key !== undefined && hidden !== true)
 
     for (let i = 0; i < items.length; i += 1) {
-      const { value, verify, key } = items[i]
+      const { value, verify, key, error } = items[i]
       if (!verify) {
         continue
       }
@@ -103,7 +107,29 @@ export default class extends Component {
         this.setError(key, verify.message)
         return
       }
+      if (error) {
+        return
+      }
     }
+
+    const result = items.map((item) => {
+      const current = {
+        key: item.key,
+        label: item.label,
+        value: item.value,
+      }
+      if (item.options) {
+        current.options = item.options
+      }
+      return current
+    })
+
+    console.log(result)
+  }
+
+  reset = () => {
+    const { defaultData } = this.props
+    this.setState({ data: this.serialize(defaultData) })
   }
 
   render() {
@@ -118,7 +144,8 @@ export default class extends Component {
           onEvent={this.onEvent}
         />
         <div>
-          <Button onClick={this.onSubmit}>提交</Button>
+          <Button onClick={this.submit}>提交</Button>
+          <Button onClick={this.reset}>重置</Button>
         </div>
       </div>
     )

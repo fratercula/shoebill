@@ -4,7 +4,7 @@ import Input from './input'
 
 export default function ({ props, onEvent }) {
   const {
-    type = 'text',
+    type,
     key,
     label,
     onChange,
@@ -12,6 +12,7 @@ export default function ({ props, onEvent }) {
     wrapperCol,
     error,
     verify,
+    hidden = false,
     ...rest
   } = props
 
@@ -29,7 +30,7 @@ export default function ({ props, onEvent }) {
     )
   }
 
-  if (!c) {
+  if (!c || hidden) {
     return null
   }
 
