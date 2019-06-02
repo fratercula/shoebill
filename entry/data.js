@@ -1,54 +1,57 @@
 export default [
   [
     {
-      key: 'nick',
-      value: '12',
-      label: 'nick',
+      key: 'zero',
+      type: 'Input',
+      label: 'zero',
       verify: {
-        message: '错误',
+        message: 'error',
         validator(value) {
-          return value !== ''
+          return !!value
         },
       }
-    },
-    {
-      key: 'age',
-      disabled: true,
-      type: 'input',
-      value: '123213',
-      onChange(value) {
-        this.update('nick', { value })
-      },
     },
   ],
-  [
-    {},
-    {
-      type: 'input',
-      key: 'tttt',
-      value: 'op',
-      label: 'txt',
-      hidden: true,
-      subscribe(key, value) {
-        if (key === 'tttt') {
-          value === 'error'
-            ? this.setError('age', '???')
-            : this.removeError('age')
-        }
-      },
-      verify: {
-        message: '什么错误',
-        validator(value) {
-          return new Promise((resolve) => {
-            setTimeout(() => {
-              resolve(value === '???')
-            }, 1000)
-          })
-        },
-      }
-    },
-  ]
 ]
+
+//     {
+//       key: 'age',
+//       disabled: true,
+//       type: 'Input',
+//       value: '123213',
+//       onChange(value) {
+//         this.update('nick', { value })
+//       },
+//     },
+//   ],
+//   [
+//     {},
+//     {
+//       type: 'input',
+//       key: 'tttt',
+//       value: 'op',
+//       label: 'txt',
+//       hidden: true,
+//       subscribe(key, value) {
+//         if (key === 'tttt') {
+//           value === 'error'
+//             ? this.setError('age', '???')
+//             : this.removeError('age')
+//         }
+//       },
+//       verify: {
+//         message: '什么错误',
+//         validator(value) {
+//           return new Promise((resolve) => {
+//             setTimeout(() => {
+//               resolve(value === '???')
+//             }, 1000)
+//           })
+//         },
+//       }
+//     },
+//   ]
+// ]
 
 
 /*
@@ -64,7 +67,9 @@ export default [
   subscribe: Function,
   error: String,
   type: String,
-
+  labelAlign: String,
+  wrapperCol: String,
+  labelCol: String,
   disabled: Boolean,
   hidden: Boolean,
 }

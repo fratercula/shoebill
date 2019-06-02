@@ -1,53 +1,14 @@
-import React from 'react'
-import { Form } from 'antd'
-import Input from './input'
-
-export default function ({ props, onEvent }) {
-  const {
-    type,
-    key,
-    label,
-    onChange,
-    labelCol,
-    wrapperCol,
-    error,
-    verify,
-    hidden = false,
-    ...rest
-  } = props
-
-  let c = null
-
-  if (type === 'text' && key) {
-    c = (
-      <span>{rest.value}</span>
-    )
-  }
-
-  if (type === 'input') {
-    c = (
-      <Input {...rest} onChange={v => onEvent(onChange, key, v)} />
-    )
-  }
-
-  if (!c || hidden) {
-    return null
-  }
-
-  return (
-    <Form
-      style={{ width: '100%' }}
-      labelCol={labelCol}
-      wrapperCol={wrapperCol}
-    >
-      <Form.Item
-        required={!!verify}
-        label={label}
-        validateStatus={error ? 'error' : null}
-        help={error}
-      >
-        {c}
-      </Form.Item>
-    </Form>
-  )
-}
+export Checkbox from './checkbox'
+export DatePicker from './datepicker'
+export Input from './input'
+export InputNumber from './inputnumber'
+export MonthPicker from './monthpicker'
+export Radio from './radio'
+export RangePicker from './rangepicker'
+export Rate from './rate'
+export Select from './select'
+export Slider from './slider'
+export Switch from './switch'
+export TextArea from './textarea'
+export TimePicker from './timepicker'
+export WeekPicker from './weekpicker'

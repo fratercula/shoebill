@@ -5,9 +5,10 @@ import data from './data'
 
 render((
   <Shoebill
+    style={{ width: 600, marginTop: 60 }}
     defaultData={data}
-    labelCol={{ span: 3 }}
+    labelCol={{ span: 4 }}
     labelAlign="left"
-    wrapperCol={{ span: 18 }}
+    wrapperCol={{ span: 20 }}
   />
 ), document.querySelector('#root'))

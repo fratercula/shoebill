@@ -1,6 +1,6 @@
 import React from 'react'
 import { TimePicker } from 'antd'
-import moment from moment
+import moment from 'moment'
 
 export default function ({ value, onChange, format = 'HH:mm:ss', ...props }) {
   return (

@@ -2,19 +2,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'antd'
 import { Card } from '@fratercula/owl'
-import forms from './component'
+import form from './form'
 
 export default class extends Component {
   static propTypes = {
     defaultData: PropTypes.array,
     labelCol: PropTypes.object,
     wrapperCol: PropTypes.object,
+    labelAlign: PropTypes.string,
   }
 
   static defaultProps = {
     defaultData: [],
     labelCol: { span: 4 },
     wrapperCol: { span: 20 },
+    labelAlign: 'right',
   }
 
   state = {
@@ -28,13 +30,13 @@ export default class extends Component {
   }
 
   serialize = (origin) => {
-    const { labelCol, wrapperCol } = this.props
+    const { labelCol, wrapperCol, labelAlign } = this.props
     const data = []
 
     origin.forEach((items, i) => {
       data[i] = []
       items.forEach((item, j) => {
-        data[i][j] = { type: 'forms', props: {} }
+        data[i][j] = { type: 'form', props: {} }
         const { onChange, subscribe, ...rest } = item
 
         if (typeof subscribe === 'function') {
@@ -51,6 +53,7 @@ export default class extends Component {
 
         data[i][j].props.labelCol = data[i][j].props.labelCol || labelCol
         data[i][j].props.wrapperCol = data[i][j].props.wrapperCol || wrapperCol
+        data[i][j].props.labelAlign = data[i][j].props.labelAlign || labelAlign
       })
     })
 
@@ -134,12 +137,18 @@ export default class extends Component {
 
   render() {
     const { data } = this.state
+    const {
+      defaultData,
+      wrapperCol,
+      labelCol,
+      ...rest
+    } = this.props
 
     return (
-      <div>
+      <div {...rest}>
         <Card
           cellMargin={[0, 20]}
-          components={{ forms }}
+          components={{ form }}
           data={data}
           onEvent={this.onEvent}
         />
