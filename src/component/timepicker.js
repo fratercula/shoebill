@@ -1,8 +1,14 @@
 import React from 'react'
 import { TimePicker } from 'antd'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
-export default function ({ value, onChange, format = 'HH:mm:ss', ...props }) {
+function T({
+  value,
+  onChange,
+  format,
+  ...props
+}) {
   return (
     <TimePicker
       {...props}
@@ -12,3 +18,15 @@ export default function ({ value, onChange, format = 'HH:mm:ss', ...props }) {
     />
   )
 }
+
+T.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  format: PropTypes.string,
+}
+
+T.defaultProps = {
+  format: 'HH:mm:ss',
+}
+
+export default T

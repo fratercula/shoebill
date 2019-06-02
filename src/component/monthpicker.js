@@ -1,8 +1,14 @@
 import React from 'react'
 import { DatePicker } from 'antd'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
-export default function ({ value, onChange, format = 'YYYY-MM', ...props }) {
+function M({
+  value,
+  onChange,
+  format,
+  ...props
+}) {
   return (
     <DatePicker.MonthPicker
       {...props}
@@ -12,3 +18,15 @@ export default function ({ value, onChange, format = 'YYYY-MM', ...props }) {
     />
   )
 }
+
+M.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  format: PropTypes.string,
+}
+
+M.defaultProps = {
+  format: 'YYYY-MM',
+}
+
+export default M

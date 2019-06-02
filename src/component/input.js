@@ -1,7 +1,8 @@
 import React from 'react'
 import { Input } from 'antd'
+import PropTypes from 'prop-types'
 
-export default function ({ onChange, ...props }) {
+function I({ onChange, ...props }) {
   return (
     <Input
       {...props}
@@ -9,3 +10,9 @@ export default function ({ onChange, ...props }) {
     />
   )
 }
+
+I.propTypes = {
+  onChange: PropTypes.func.isRequired,
+}
+
+export default I

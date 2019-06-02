@@ -1,7 +1,8 @@
 import React from 'react'
 import { Select } from 'antd'
+import PropTypes from 'prop-types'
 
-export default function ({ onChange, options, ...props }) {
+function S({ onChange, options, ...props }) {
   return (
     <Select
       {...props}
@@ -17,3 +18,10 @@ export default function ({ onChange, options, ...props }) {
     </Select>
   )
 }
+
+S.propTypes = {
+  options: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
+}
+
+export default S

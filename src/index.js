@@ -102,7 +102,13 @@ export default class extends Component {
       .filter(({ key, hidden }) => key !== undefined && hidden !== true)
 
     for (let i = 0; i < items.length; i += 1) {
-      const { value, verify, key, error } = items[i]
+      const {
+        value,
+        verify,
+        key,
+        error,
+      } = items[i]
+
       if (!verify) {
         continue
       }

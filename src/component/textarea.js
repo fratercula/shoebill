@@ -1,7 +1,8 @@
 import React from 'react'
 import { Input } from 'antd'
+import PropTypes from 'prop-types'
 
-export default function ({ onChange, ...props }) {
+function T({ onChange, ...props }) {
   return (
     <Input.TextArea
       rows={4}
@@ -10,3 +11,9 @@ export default function ({ onChange, ...props }) {
     />
   )
 }
+
+T.propTypes = {
+  onChange: PropTypes.func.isRequired,
+}
+
+export default T

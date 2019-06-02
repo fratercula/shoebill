@@ -1,8 +1,14 @@
 import React from 'react'
 import { DatePicker } from 'antd'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
-export default function ({ value, onChange, format = 'YYYY-wo', ...props }) {
+function W({
+  value,
+  onChange,
+  format,
+  ...props
+}) {
   return (
     <DatePicker.WeekPicker
       {...props}
@@ -12,3 +18,15 @@ export default function ({ value, onChange, format = 'YYYY-wo', ...props }) {
     />
   )
 }
+
+W.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  format: PropTypes.string,
+}
+
+W.defaultProps = {
+  format: 'YYYY-wo',
+}
+
+export default W

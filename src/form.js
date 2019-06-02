@@ -1,8 +1,9 @@
 import React from 'react'
 import { Form } from 'antd'
+import PropTypes from 'prop-types'
 import * as component from './component'
 
-export default function ({ props, onEvent }) {
+function F({ props: args, onEvent }) {
   const {
     type,
     key,
@@ -15,7 +16,7 @@ export default function ({ props, onEvent }) {
     verify,
     hidden = false,
     ...rest
-  } = props
+  } = args
 
   let c = null
 
@@ -53,3 +54,15 @@ export default function ({ props, onEvent }) {
     </Form>
   )
 }
+
+F.propTypes = {
+  props: PropTypes.object,
+  onEvent: PropTypes.func,
+}
+
+F.defaultProps = {
+  props: {},
+  onEvent: () => null,
+}
+
+export default F
