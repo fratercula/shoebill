@@ -10,6 +10,7 @@ export default class extends Component {
     labelCol: PropTypes.object,
     wrapperCol: PropTypes.object,
     labelAlign: PropTypes.string,
+    components: PropTypes.object,
   }
 
   static defaultProps = {
@@ -17,6 +18,7 @@ export default class extends Component {
     labelCol: { span: 4 },
     wrapperCol: { span: 20 },
     labelAlign: 'right',
+    components: {},
   }
 
   state = {
@@ -147,6 +149,7 @@ export default class extends Component {
       defaultData,
       wrapperCol,
       labelCol,
+      components,
       ...rest
     } = this.props
 
@@ -154,7 +157,7 @@ export default class extends Component {
       <div {...rest}>
         <Card
           cellMargin={[0, 20]}
-          components={{ form }}
+          components={{ form: form.bind({ components }) }}
           data={data}
           onEvent={this.onEvent}
         />

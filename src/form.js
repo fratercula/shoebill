@@ -17,6 +17,7 @@ function F({ props: args, onEvent }) {
     hidden = false,
     ...rest
   } = args
+  const { components } = this
 
   let c = null
 
@@ -26,7 +27,7 @@ function F({ props: args, onEvent }) {
     )
   }
 
-  const C = component[type]
+  const C = component[type] || components[type]
 
   if (!C || hidden) {
     return null

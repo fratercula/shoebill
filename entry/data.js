@@ -9,7 +9,24 @@ export default [
         validator(value) {
           return !!value
         },
-      }
+      },
+    },
+  ],
+  [
+    {
+      key: 'one',
+      type: 'Custom',
+      label: 'one',
+      options: [
+        {
+          label: 'one',
+          value: 'one',
+        },
+        {
+          label: 'two',
+          value: 'two',
+        },
+      ],
     },
   ],
 ]
