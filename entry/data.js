@@ -72,22 +72,33 @@ export default [
 
 
 /*
+
+<SForm inline onSubmit={} defaultValue={} />
+
 {
-  key: String,
-  value: String/Number/Boolean/Object/Array,
-  label: String,
-  verify: {
-    message: String,
-    validator: Function,
-  },
-  onChange: Function,
-  subscribe: Function,
-  error: String,
   type: String,
-  labelAlign: String,
-  wrapperCol: String,
-  labelCol: String,
-  disabled: Boolean,
+  key: String,
+  value: any,
+  label: String,
+  validator: Function/String,
+  effects: Function,
+  subscribe: Function,
+  editable: Boolean,
   hidden: Boolean,
+  disabled: Boolean,
+  style: {
+    colon: ':',
+    ...
+  }
 }
+
+registeValidator('email', (value) => {
+  reject(...)
+})
+
+registeFormType('checkbox', (key, data) => {
+  return (
+
+  )
+})
 */
